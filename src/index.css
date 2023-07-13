@@ -1,0 +1,71 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+  margin: 2rem;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+.card{
+  background-color: #F5F7FB;
+  width:min(550px, 90%);
+  height: 550px;
+  margin: 0 auto;
+  position: relative;
+}
+/* .blob-up{
+  position: relative;
+} */
+/* .blob-up::before{
+  position: absolute;
+  content: "";
+  background-image: url(./assets/blob-start-up.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 197px;
+  height: 135px;
+  background-position: right;
+  left: 300px;
+} */
+.card__content{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.card__title{
+  font-size: 31.25px;
+  font-weight: 700;
+}
+.btn{
+border: none;
+border-radius: 15px;
+background: #4D5B9E;
+color: #fff;
+padding: .8rem 2rem;
+font-weight: 500;
+text-align: center;
+font-size: 1rem;
+cursor: pointer;
+
+}
+
+.card__questions{
+  width: min(400px, 90%);
+  margin: 0 auto;
+  padding: 1em 0;
+}
+
