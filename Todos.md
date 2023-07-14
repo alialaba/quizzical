@@ -1,5 +1,5 @@
 - two screens (start & questions). style polish
-- access api from OTDB Api https://opentdb.com/api_config.php.
+- access api from OTDB Api https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple
 - tally correct answers after check answer is clicked.
 
 
