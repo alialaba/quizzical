@@ -15,7 +15,7 @@ function App() {
 
   return (
     <main>
-      {!startQuiz ?  <StartScreen isQuizOn={handleStartQuiz}/> : <QuestionsScreen/>}
+      {!startQuiz ?  <StartScreen startQuiz={handleStartQuiz}/> : <QuestionsScreen/>}
       {/* 
        */}
     </main>
