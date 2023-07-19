@@ -32,7 +32,7 @@ h1 {
   }
 .card{
   background-color: #F5F7FB;
-  width:min(550px, 90%);
+  width:min(600px, 90%);
   height: 550px;
   margin: 0 auto;
   position: relative;
@@ -65,30 +65,38 @@ h1 {
 
 
 .card__questions{
-  width: min(450px, 90%);
-  margin: 0 auto;
+  width: min(500px, 90%);
+  /* margin: 0 auto; */
   padding: 1em 0;
+}
+
+.card__question{
+  display: inline-block;
+  text-align: left;
 }
 
 
 
 /*Start style input radios like btn */
 .radio__button {
-  list-style-type: none;
+  /* list-style-type: none; */
   margin: 25px 0 0 0;
   padding: 0;
+
 }
 
-.radio__button li {
+.radio__button  {
   float: left;
   margin: 0 5px 0 0;
-  width: 90px;
+  width: 100%;
   height: 30.65px;
   position: relative;
 }
 
-.radio__button li label,
-.radio__button li input {
+
+
+.radio__button  label,
+.radio__button  input {
   display: block;
   position: absolute;
   top: 0;
@@ -116,6 +124,7 @@ background: #D6DBF5;
   text-align: center;
   border: 0.794px solid #4D5B9E;
   border-radius: 7.942px;
+  font-size: .9rem;
 
 }
 /* End style input radios like btn */

@@ -10,3 +10,9 @@
   - 1 track the selected answer index inside each question object 
   - 2 use an html form radios input using the same name attribute to automatically only allow one selection 
   - 3 check how to style a radio input to look like a button.
+
+
+<!-- <div className="radio__button" key={answerIndex}>
+                    <input type="radio" id="a25" name="option" />
+                     <label htmlFor="a25">{answer}</label>
+</div>  -->
