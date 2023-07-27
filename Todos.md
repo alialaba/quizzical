@@ -12,7 +12,12 @@
   - 3 check how to style a radio input to look like a button.
 
 
-<!-- <div className="radio__button" key={answerIndex}>
-                    <input type="radio" id="a25" name="option" />
-                     <label htmlFor="a25">{answer}</label>
-</div>  -->
+
+
+## process
+- create screens (start & questions) screen
+- implement start quiz
+- implement the api calls
+- display questions (decode any encoded entities)
+- display the all answers options includes(correct__answer & incorrectanswer) 
+  - shuffle answers(correct__answer & incorrectanswer) randomly

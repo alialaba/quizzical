@@ -67,12 +67,16 @@ h1 {
 .card__questions{
   width: min(500px, 90%);
   /* margin: 0 auto; */
-  padding: 1em 0;
+  /* padding: 1em 0; */
 }
 
 .card__question{
   display: inline-block;
   text-align: left;
+  border-bottom: 2px solid #DBDEF0;
+  padding: 1em;
+  width: 100%;
+  /* background-color: aqua; */
 }
 
 
