@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [startQuiz, setStartQuiz] = useState(false);
-  const [quizs, setQuizs] = useState(null);
+  const [quizData, setQuizData] = useState([]);
   const [score, setScore] = useState(0);
   
   
@@ -42,9 +42,16 @@ function App() {
         "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
       );
       console.log(response.data.results);
-      setQuizs(response.data.results.map(ques=>{
-        console.log(ques)
-      }));
+
+      setQuizData(response.data.results.map((item)=>{
+        return {
+          id:nanoid(),
+          question: item.question,
+          correctAnswer: item.correct_answer,
+          answers: shuffleAnswers([...item.incorrect_answers, item.correct_answer]),
+          score: 0
+        }
+      }))
 
       setLoading(false);
     } catch (error) {
@@ -64,7 +71,7 @@ function App() {
       {!startQuiz ? 
         (<StartScreen startQuiz={handleStartQuiz} />)
       : 
-        (<QuestionsScreen quizs={quizs} shuffledAnswers={shuffleAnswers} />
+        (<QuestionsScreen quizData={quizData} key={nanoid()} />
 )      }
       
     </main>

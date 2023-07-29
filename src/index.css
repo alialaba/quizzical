@@ -32,7 +32,7 @@ h1 {
   }
 .card{
   background-color: #F5F7FB;
-  width:min(600px, 90%);
+  width:min(800px, 90%);
   height: 550px;
   margin: 0 auto;
   position: relative;
@@ -65,7 +65,7 @@ h1 {
 
 
 .card__questions{
-  width: min(500px, 90%);
+  width: min(800px, 90%);
   /* margin: 0 auto; */
   /* padding: 1em 0; */
 }
