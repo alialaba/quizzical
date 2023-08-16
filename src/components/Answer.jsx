@@ -1,11 +1,14 @@
 import React from "react";
 import { decode } from "html-entities";
 
-export default function Answer({answer}){
+export default function Answer({answer, isSelected, onSelect, isCorrect}){
+  
     return(
-        <div className="radio__button" >
-      <input type="radio" id={`a${answer}`} name="option" />
-      <label htmlFor={`a${answer}`} style={{fontSize:"14px"}}>{decode(answer)}</label>
+        <div className={`radio__button ${isSelected ? "selected" : "" } ${
+          isCorrect ? "correct" : ""} ` } >
+      <button className={`answer__button ${isSelected ? "selected" : ""}`} onClick={onSelect}>
+      {decode(answer)}
+      </button>
     </div>
     );
 }
