@@ -42,8 +42,14 @@ const shuffleAnswers = (answers)=>{
           id: nanoid(), // Make sure nanoid() is defined
           question: item.question,
           correctAnswer: item.correct_answer,
-          answers: shuffleAnswers([...item.incorrect_answers, item.correct_answer]), // Make sure shuffleAnswers() is defined
-          score:0
+          answers: shuffleAnswers([...item.incorrect_answers, item.correct_answer]).map((answer)=>({
+            id:nanoid(5),
+            answer: answer,
+            isHeld:false
+
+          })), // Make sure shuffleAnswers() is defined
+          score:0,
+          
         };
   }));
    } catch (error) {
@@ -55,6 +61,7 @@ const shuffleAnswers = (answers)=>{
 
   useEffect(() => {
     getQuizs();
+    
   }, [startQuiz]);
 
   return (

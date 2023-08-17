@@ -2,34 +2,34 @@ import React, { useState } from "react";
 import Button from "./Button";
 import Question from "./Question";
  
-export default function QuestionsScreen({quizData}) {
+export default function QuestionsScreen(props) {
 
- let showQuestions = quizData.map((quiz, index)=>{
- return(
-  <span  className="card__question">
+ let showQuestions = props.quizData.map((quiz)=>(
+  // console.log(quiz.id)
+  // <span  className="card__question">
   <Question
    key={quiz.id}
    questionId={quiz.id}
    question={quiz.question}
    answers={quiz.answers}
-   quizData={quizData}
-  //  setQuizData={quiz.setQuizData}
-  //  heldAnswer={quiz.heldAnswer}
-  //  score={quiz.score}
-  //  setScore={quiz.setScore}
-   />
-</span>
- );
+   quizData={props.quizData}
+   setQuizData={props.setQuizData}
+  
+  />
+// </span>
       
- })
+ ))
 
  
   return (
     <div className="card">
       <div className="card__questions">
+      <div className="card__question">
       {showQuestions}
+      {/* </hr> */}
       </div>
-      <Button text="check Answer"   /> 
+      </div>
+      <Button text="check Answer" className="check-answer-btn"  /> 
      
     </div>
   );

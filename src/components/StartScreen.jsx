@@ -8,7 +8,7 @@ export default function StartScreen({startQuiz}){
             <div className="card__content">
             <h2 className="card__title">Quizzical</h2>
             <p className="card__text">some decription here</p>
-            <Button text="Start Quiz" onClick={startQuiz}/>
+            <Button text="Start Quiz" className="intro-btn" onClick={startQuiz}/>
             </div>
         </div>
     );

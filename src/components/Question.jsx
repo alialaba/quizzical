@@ -1,24 +1,26 @@
 import React , {useState}from "react";
 import { decode } from "html-entities";
-import Answer from "./Answer";
-export default function Question({answers, question,}){
+import Button from "./Button";
 
-    // const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+export default function Question(props){
 
-    const renderedAnswers = answers.map((answer, index) => (
-        <Answer 
-        key={answer} 
-        answer={answer} 
-        // isSelected={index === selectedAnswerIndex}
-        // onSelect={()=> handleAnswerSelect(index)} 
-        // isCorrect={index === correctAnswerIndex}
+    const renderedAnswers = props.answers.map((item) => (
+        <Button 
+        className="btn"
+        key={item.id}
+        text={decode(item.answer)}
+        item={item}
+        isHeld={item.isHeld}
+
+        
         />
        
       ));
 
+    //   console.log(renderedAnswers);
     return(
         <div>
-            <p>{decode(question)}</p>
+            <p>{decode(props.question)}</p>
            <div style={{display:"flex"}}>
            {renderedAnswers}
            </div>
