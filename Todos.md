@@ -18,6 +18,8 @@
 - create screens (start & questions) screen
 - implement start quiz
 - implement the api calls
-- display questions (decode any encoded entities)
-- display the all answers options includes(correct__answer & incorrectanswer) 
-  - shuffle answers(correct__answer & incorrectanswer) randomly
+  - arr of objects {id, question, correctAnswer, answers and score}
+<!-- - display questions (decode any encoded entities) -->
+    - each answer should have obj literal (id, isheld, answer)
+      - display the all answers options includes(correct__answer & incorrectanswer) 
+    - shuffle answers(correct__answer & incorrectanswer) randomly.

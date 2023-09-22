@@ -1,15 +1,11 @@
 import React from "react";
-import Button from "./Button";
 
-export default function StartScreen({startQuiz}){
+export default function StartScreen(props){
     return(
-        <div className="card">
-            <div className="blob-up"></div>
-            <div className="card__content">
-            <h2 className="card__title">Quizzical</h2>
-            <p className="card__text">some decription here</p>
-            <Button text="Start Quiz" className="intro-btn" onClick={startQuiz}/>
-            </div>
+        <div className="">
+            <h1>Quizzical</h1>
+            <p>Some description if needed</p>
+            <button onClick={()=> props.getStarted()}>Start quiz</button>
         </div>
     );
 }

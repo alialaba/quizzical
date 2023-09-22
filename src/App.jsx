@@ -1,83 +1,83 @@
 import { useState, useEffect } from "react";
-import StartScreen from "./components/StartScreen";
-import QuestionsScreen from "./components/QuestionsScreen";
+
 import axios from "axios";
 import { nanoid } from "nanoid" ;
+import StartScreen from "./components/StartScreen";
+import QuizScreen from "./components/QuizScreen";
 
 function App() {
-  const [error, setError] = useState("");
-  const [startQuiz, setStartQuiz] = useState(false);
+
+  const [startGame, setStartGame] = useState(false);
   const [quizData, setQuizData] = useState([]);
-  const [score, setScore] = useState(0);
-  const [hasCheckedAnswers, setHasCheckedAnswers] = useState(false);
+  const [stage, setStage] = useState("");
+ 
   
-  
-// handle start quiz
-const handleStartQuiz = () => {
-    setStartQuiz((prevState) => !prevState);
-};
 
-//shuffle answers 
-const shuffleAnswers = (answers)=>{
+  //shuffle (incorrect_answers and correct_answer)
+  const shuffleAnswers =(answers)=>{
     let shuffledAnswers = [...answers];
-    for(let i = shuffledAnswers.length - 1; i > 0; i--){
-
+    for(let i = shuffledAnswers.length - 1; i > 0 ; i--){
       let j = Math.floor(Math.random() * (i + 1));
-      [shuffledAnswers[i], shuffledAnswers[j]] = [shuffledAnswers[j],shuffledAnswers[i]]
-
+      [shuffledAnswers[i], shuffledAnswers[j]] =  [shuffledAnswers[j], shuffledAnswers[i]]
     }
-    return shuffledAnswers;
 
+    return shuffledAnswers
   }
 
 
-  //handle Api call
-  const getQuizs = async () => {
+  //startGame func
+  const getStarted = ()=>{
+    setStartGame(!startGame)
+  }
 
-   try {
-    const response = await fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple");
-    const data = await response.json();
-    setQuizData(data.results.map((item) => {
-      return {
-          id: nanoid(), // Make sure nanoid() is defined
+
+  //Fetch Api
+  const getQuizData = async ()=>{
+    try {
+      setStage("loading");
+      const res = await fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple");
+      const data = await res.json();
+      console.log(data);
+      setQuizData(data.results.map((item)=>{
+        return{
+          id:nanoid(),
           question: item.question,
           correctAnswer: item.correct_answer,
           answers: shuffleAnswers([...item.incorrect_answers, item.correct_answer]).map((answer)=>({
             id:nanoid(5),
-            answer: answer,
-            isHeld:false
+            isHeld: false,
+            value: answer
 
-          })), // Make sure shuffleAnswers() is defined
-          score:0,
-          
-        };
-  }));
-   } catch (error) {
-    setError(error.message);
-   }
+          }))
+        }
+      }))
 
-
-  };
-
-  useEffect(() => {
-    getQuizs();
-    
-  }, [startQuiz]);
-
-  return (
-    <main>
-      {!startQuiz ? 
-        (<StartScreen startQuiz={handleStartQuiz} />)
-      : 
-        (<QuestionsScreen  
-          quizData={quizData}
-          key={nanoid()} 
-          setQuizData={setQuizData}
-            />
-)      }
+      setStage("done")
       
-    </main>
-  );
+    } catch (error) {
+      
+      console.log(error)
+    }
+  }
+
+  useEffect(()=>{
+
+if(startGame){
+  getQuizData()
+}
+
+  }, [startGame])
+
+  switch(stage){
+      case "loading":
+        return (<h3>Loading...</h3>);
+        case "done":
+        return (<QuizScreen quizData={quizData} setQuizData={setQuizData}/>);  
+        default:
+      return(<StartScreen getStarted={getStarted}/>);
+   
+  }
+
 }
 
 export default App;

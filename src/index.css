@@ -9,7 +9,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
 body {
   margin: 2rem;
 }
@@ -34,7 +33,7 @@ h1 {
   .btn:first-child{
     margin-left: 0;
   }
-  .intro-btn {
+  .intro-btn, .check-answer-btn, .play-again-btn {
     border: none;
     border-radius: 15px;
     background: #4D5B9E;
@@ -44,6 +43,12 @@ h1 {
     text-align: center;
     font-size: 1rem;
   
+  }
+  .play-again{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
   }
 .card{
   background-color: #F5F7FB;
@@ -122,3 +127,40 @@ background: #D6DBF5;
 
 
 /* End style input radios like btn */
+
+
+
+
+
+
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

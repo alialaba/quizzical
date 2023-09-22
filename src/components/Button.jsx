@@ -1,6 +1,5 @@
-import React from "react";
-
-
-export default function Button({text, onClick, className}){
-    return <button className={className}  onClick={onClick}>{text}</button>
+export default function Button(props){
+    return(
+        <button className="btn">{props.answer}</button>
+    );
 }
