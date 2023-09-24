@@ -12,12 +12,12 @@ export default function Button(props){
         }else if(item.isWrong){
             style = {
                 backgroundColor: "#F8BCBC",
-                opacity: 0.2,
+                opacity: 0.5,
                 border: "none"
             }
         }else if(item.isFaded){
             style = {
-                opacity: 0.2
+                opacity: 0.5
             }
         }else{
            style ={

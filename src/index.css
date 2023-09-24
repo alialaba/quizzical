@@ -63,6 +63,7 @@ h1 {
     font-weight: 500;
     text-align: center;
     font-size: 1rem;
+    cursor: pointer;
 }
 .quiz{
   text-align: left;
@@ -71,6 +72,7 @@ h1 {
 }
 .quiz__options > * + *{
   margin-left: 2em;
+  line-height: 1.7;
 }
 .quiz__answer{
   background: none;
@@ -80,6 +82,7 @@ line-height: 1.5;
 padding: .5em 1em;
 font-size: 13.5px;
 cursor: pointer;
+margin-bottom: .9em;
 }
 
 /* .blob-up{

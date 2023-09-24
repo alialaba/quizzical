@@ -10,12 +10,24 @@ function App() {
   const [startGame, setStartGame] = useState(false);
   const [quizData, setQuizData] = useState([]);
   const [stage, setStage] = useState("");
+  const [hasCheckedAnswer, setHasCheckedAnswer] = useState(false);
+  const [score, setScore] = useState(0);
  
   
-  //Held answer
 
+
+  //play again
+  const playAgain = ()=>{
+    setStartGame(false);
+    setStage("");
+    setHasCheckedAnswer(false);
+    setScore(0);
+  }
+
+
+
+  //functiom to Held answer
   const heldAnswer = (answerId, questionId)=>{
-      
     setQuizData(prevData=>
        prevData.map((item)=>{
         if(item.id === questionId){
@@ -47,23 +59,26 @@ function App() {
   }
 
 
-  //check answer 
-
+  //function check answer 
   const checkAnswer =()=>{
-    setQuizData(prevData=>
-      prevData.map((item)=>{
+    
+     const updatedData = quizData.map((item)=>{
         const checkedAnswer = item.answers.map((answer)=>{
-          //isCorrect isWrong isFaded
+          //check the held answer is correct
           if(answer.isHeld && item.correctAnswer  === answer.value){
+            //increase the score  by 1
+            setScore((prevScore)=> prevScore + 1);
             return{
               ...answer,
               isCorrect: true
             }
+            //check the held answer is incorrect 
           }else if(answer.isHeld && item.correctAnswer !== answer.value){
             return{
               ...answer,
               isWrong: true
             }
+            //check the held answer is false but is the  correct answer
           }else if(!answer.isHeld && item.correctAnswer === answer.value ){
             return{
               ...answer,
@@ -83,8 +98,9 @@ function App() {
         }
      
       })
-      
-      )
+
+      setHasCheckedAnswer(true);
+      setQuizData(updatedData)
   }
 
   //shuffle (incorrect_answers and correct_answer)
@@ -92,6 +108,7 @@ function App() {
     let shuffledAnswers = [...answers];
     for(let i = shuffledAnswers.length - 1; i > 0 ; i--){
       let j = Math.floor(Math.random() * (i + 1));
+      //interchange the answers randomly
       [shuffledAnswers[i], shuffledAnswers[j]] =  [shuffledAnswers[j], shuffledAnswers[i]]
     }
 
@@ -148,9 +165,13 @@ if(startGame){
         case "done":
         return (<QuizScreen 
           quizData={quizData}
+          hasCheckedAnswer={hasCheckedAnswer}
+          score={score}
           setQuizData={setQuizData}
           heldAnswer={heldAnswer}
           checkAnswer={checkAnswer}
+          setHasCheckedAnswer={setHasCheckedAnswer}
+          playAgain={playAgain}
            />);  
         default:
       return(<StartScreen getStarted={getStarted}/>);
