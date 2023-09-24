@@ -19,38 +19,32 @@ h1 {
 }
 
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  /* text-align: center; */
-}
-
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-
 /* Quiz component */
 .card{
   margin: 0 auto;
-  width: min(800px, 90%);
-  /* height: 100vh; */
+  width: min(800px, 100%);
   background: #F5F7FB;
   padding: 3em;
   text-align: center;
 }
+.card__extra{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+  height: 500px;
+}
+/* .card__extra::before{
+  position: absolute;
+  content: "";
+  background-image: url(./assets/blob-start-up.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 197px;
+  height: 135px;
+  right: 5px;
+} */
 .card__bottom{
   margin-top: 2em;
 }

@@ -161,7 +161,7 @@ if(startGame){
 
   switch(stage){
       case "loading":
-        return (<div className="card"><h3>Loading...</h3></div>);
+        return (<div className="card card__extra"><h3>Loading...</h3></div>);
         case "done":
         return (<QuizScreen 
           quizData={quizData}
