@@ -12,6 +12,80 @@ function App() {
   const [stage, setStage] = useState("");
  
   
+  //Held answer
+
+  const heldAnswer = (answerId, questionId)=>{
+      
+    setQuizData(prevData=>
+       prevData.map((item)=>{
+        if(item.id === questionId){
+          const newAnswerArr = item.answers.map((answer)=>{
+            if(answer.id === answerId){
+              return{
+                ...answer,
+                isHeld: true
+              }
+            }else{
+              return{
+                ...answer,
+                isHeld: false
+              }
+            }
+
+          })
+
+          //update the item answers array
+          return{
+            ...item,
+            answers: newAnswerArr
+          }
+        }else{
+          return item;
+        }
+       })
+      )
+  }
+
+
+  //check answer 
+
+  const checkAnswer =()=>{
+    setQuizData(prevData=>
+      prevData.map((item)=>{
+        const checkedAnswer = item.answers.map((answer)=>{
+          //isCorrect isWrong isFaded
+          if(answer.isHeld && item.correctAnswer  === answer.value){
+            return{
+              ...answer,
+              isCorrect: true
+            }
+          }else if(answer.isHeld && item.correctAnswer !== answer.value){
+            return{
+              ...answer,
+              isWrong: true
+            }
+          }else if(!answer.isHeld && item.correctAnswer === answer.value ){
+            return{
+              ...answer,
+              isCorrect: true
+            }
+          }else{
+            return{
+              ...answer,
+              isFaded: true
+            }
+          }
+        })
+      //do some update here
+        return{
+          ...item,
+         answers: checkedAnswer
+        }
+     
+      })
+      
+      )
+  }
 
   //shuffle (incorrect_answers and correct_answer)
   const shuffleAnswers =(answers)=>{
@@ -70,9 +144,14 @@ if(startGame){
 
   switch(stage){
       case "loading":
-        return (<h3>Loading...</h3>);
+        return (<div className="card"><h3>Loading...</h3></div>);
         case "done":
-        return (<QuizScreen quizData={quizData} setQuizData={setQuizData}/>);  
+        return (<QuizScreen 
+          quizData={quizData}
+          setQuizData={setQuizData}
+          heldAnswer={heldAnswer}
+          checkAnswer={checkAnswer}
+           />);  
         default:
       return(<StartScreen getStarted={getStarted}/>);
    

@@ -10,6 +10,8 @@ export default function Question(props){
     item={item}
     answer={item.value}
     isHeld={item.isHeld}
+    questionId={props.questionId}
+    heldAnswer={props.heldAnswer}
     
     />
    ))
@@ -17,11 +19,13 @@ export default function Question(props){
     //   console.log(renderedAnswers);
     return(
         <div>
-            <h3>{decode(props.question)}</h3>
-           <div>
+        <div className="quiz">
+            <h4 className="quiz__question">{decode(props.question)}</h4>
+           <div className="quiz__options">
             {showAnswerOptions}
            </div>
-           
+           {/* <hr className="quiz__divider"/> */}
+        </div>
         </div>
     );
 }

@@ -7,12 +7,18 @@ export default function QuizScreen(props){
         questionId={item.id}
         question={item.question}
         answers={item.answers}
+        heldAnswer={props.heldAnswer}
+
         
         />
     ))
     return(
-        <div>
+        <div className="card">
            {showQuizQuestions}
+           <div className="card__bottom">
+            <button className="card__btn" onClick={()=> props.checkAnswer()}>Check answers</button>
+
+           </div>
         </div>
     );
 }
